@@ -1,0 +1,57 @@
+#hae-popup-card {
+  position: absolute;
+  z-index: 2147483647;
+  width: 320px;
+  max-height: 260px;
+  overflow-y: auto;
+  background: #1f1f24;
+  color: #e8e8ec;
+  border: 1px solid #3a3a42;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+#hae-popup-card .hae-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid #33333b;
+}
+
+#hae-popup-card .hae-title {
+  font-weight: 600;
+  font-size: 12.5px;
+  color: #9fd0ff;
+}
+
+#hae-popup-card .hae-close {
+  background: none;
+  border: none;
+  color: #9a9aa4;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px 4px;
+}
+
+#hae-popup-card .hae-close:hover {
+  color: #fff;
+}
+
+#hae-popup-card .hae-body {
+  padding: 10px 12px 12px;
+  white-space: pre-wrap;
+}
+
+#hae-popup-card .hae-loading {
+  color: #9a9aa4;
+  font-style: italic;
+}
+
+#hae-popup-card .hae-error {
+  color: #ff9d9d;
+}

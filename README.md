@@ -2,6 +2,20 @@
 
 Highlight text on any web page → a floating card shows an instant AI explanation, powered by the Gemini API.
 
+## How it works
+
+![How it works](how-it-works.svg)
+
+1. You select 3+ characters on any page — `content.js` catches the `mouseup` event
+2. It shows a floating "AI Meaning" card ("Thinking…") and sends the text to the service worker via `chrome.runtime.sendMessage({ type: "EXPLAIN", text })`
+3. `background.js` reads your Gemini API key from `chrome.storage.sync` (saved once via the Options page)
+4. It POSTs the text with a concise-explainer system prompt to the Gemini API (`gemini-flash-latest`)
+5. Gemini returns a 2–4 sentence explanation
+6. The service worker sends the answer back via `sendResponse`
+7. The card swaps "Thinking…" for the explanation
+
+The diagram source is editable at [excalidraw.com](https://excalidraw.com) — open `how-it-works.excalidraw`.
+
 ## Install
 
 1. Download / clone this repo

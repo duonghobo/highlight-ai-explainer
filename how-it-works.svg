@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 560" font-family="'Segoe Print','Bradley Hand','Chalkboard SE','Comic Sans MS',cursive">
+  <rect x="0" y="0" width="1040" height="560" fill="#ffffff"/>
+  <text x="520" y="42" text-anchor="middle" font-size="26" fill="#1e1e1e">How Highlight AI Explainer works</text>
+
+  <!-- Web page -->
+  <rect x="30" y="90" width="190" height="120" rx="10" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+  <text x="125" y="128" text-anchor="middle" font-size="18" fill="#1e1e1e">Web page</text>
+  <text x="125" y="155" text-anchor="middle" font-size="13" fill="#1e1e1e">user highlights</text>
+  <text x="125" y="175" text-anchor="middle" font-size="13" fill="#1e1e1e">3+ characters</text>
+
+  <!-- content.js -->
+  <rect x="290" y="90" width="200" height="120" rx="10" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+  <text x="390" y="128" text-anchor="middle" font-size="18" fill="#1e1e1e">content.js</text>
+  <text x="390" y="155" text-anchor="middle" font-size="13" fill="#1e1e1e">detects selection,</text>
+  <text x="390" y="175" text-anchor="middle" font-size="13" fill="#1e1e1e">shows floating card</text>
+
+  <!-- background.js -->
+  <rect x="560" y="90" width="200" height="120" rx="10" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+  <text x="660" y="128" text-anchor="middle" font-size="18" fill="#1e1e1e">background.js</text>
+  <text x="660" y="155" text-anchor="middle" font-size="13" fill="#1e1e1e">service worker,</text>
+  <text x="660" y="175" text-anchor="middle" font-size="13" fill="#1e1e1e">builds prompt</text>
+
+  <!-- Gemini API -->
+  <rect x="840" y="90" width="170" height="120" rx="10" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+  <text x="925" y="128" text-anchor="middle" font-size="18" fill="#1e1e1e">Gemini API</text>
+  <text x="925" y="155" text-anchor="middle" font-size="13" fill="#1e1e1e">gemini-flash-latest</text>
+  <text x="925" y="175" text-anchor="middle" font-size="13" fill="#1e1e1e">generateContent</text>
+
+  <!-- Options page -->
+  <rect x="330" y="400" width="190" height="100" rx="10" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+  <text x="425" y="435" text-anchor="middle" font-size="16" fill="#1e1e1e">options.html</text>
+  <text x="425" y="460" text-anchor="middle" font-size="13" fill="#1e1e1e">user pastes</text>
+  <text x="425" y="480" text-anchor="middle" font-size="13" fill="#1e1e1e">Gemini API key</text>
+
+  <!-- chrome.storage.sync -->
+  <rect x="590" y="400" width="210" height="100" rx="10" fill="#eaeaea" stroke="#1e1e1e" stroke-width="2"/>
+  <text x="695" y="435" text-anchor="middle" font-size="16" fill="#1e1e1e">chrome.storage.sync</text>
+  <text x="695" y="460" text-anchor="middle" font-size="13" fill="#1e1e1e">key stored locally,</text>
+  <text x="695" y="480" text-anchor="middle" font-size="13" fill="#1e1e1e">never in the code</text>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#1e1e1e" stroke-width="1.6"/>
+    </marker>
+  </defs>
+
+  <!-- 1: page -> content -->
+  <path d="M 222 130 C 245 126 265 126 288 130" fill="none" stroke="#1e1e1e" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="255" y="112" text-anchor="middle" font-size="12" fill="#1e1e1e">1 mouseup</text>
+
+  <!-- 2: content -> background (request, top) -->
+  <path d="M 492 118 C 515 112 535 112 558 118" fill="none" stroke="#1e1e1e" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="525" y="98" text-anchor="middle" font-size="12" fill="#1e1e1e">2 sendMessage</text>
+  <text x="525" y="114" text-anchor="middle" font-size="12" fill="#1e1e1e">{EXPLAIN, text}</text>
+
+  <!-- 6: background -> content (response, bottom) -->
+  <path d="M 558 185 C 535 192 515 192 492 185" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+  <text x="525" y="215" text-anchor="middle" font-size="12" fill="#1e1e1e">6 sendResponse</text>
+  <text x="525" y="231" text-anchor="middle" font-size="12" fill="#1e1e1e">{ok, answer}</text>
+
+  <!-- 4: background -> gemini (request, top) -->
+  <path d="M 762 118 C 785 112 815 112 838 118" fill="none" stroke="#1e1e1e" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="800" y="98" text-anchor="middle" font-size="12" fill="#1e1e1e">4 POST + key</text>
+
+  <!-- 5: gemini -> background (response, bottom) -->
+  <path d="M 838 185 C 815 192 785 192 762 185" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+  <text x="800" y="215" text-anchor="middle" font-size="12" fill="#1e1e1e">5 explanation</text>
+
+  <!-- 3: storage -> background -->
+  <path d="M 680 398 C 672 330 665 280 662 214" fill="none" stroke="#1e1e1e" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="740" y="300" text-anchor="middle" font-size="12" fill="#1e1e1e">3 read API key</text>
+
+  <!-- save key: options -> storage -->
+  <path d="M 522 450 C 545 446 565 446 588 450" fill="none" stroke="#1e1e1e" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="555" y="432" text-anchor="middle" font-size="12" fill="#1e1e1e">save key</text>
+
+  <!-- 7: content -> card -->
+  <path d="M 320 212 C 280 260 240 290 205 305" fill="none" stroke="#1e1e1e" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="215" y="255" text-anchor="middle" font-size="12" fill="#1e1e1e">7 update card</text>
+
+  <!-- floating card sketch -->
+  <rect x="60" y="310" width="200" height="110" rx="10" fill="#ffffff" stroke="#4263eb" stroke-width="2.5"/>
+  <line x1="60" y1="345" x2="260" y2="345" stroke="#4263eb" stroke-width="1.5"/>
+  <text x="76" y="334" font-size="13" fill="#4263eb">&#10024; AI Meaning</text>
+  <text x="244" y="336" font-size="14" fill="#4263eb">&#215;</text>
+  <text x="76" y="372" font-size="12" fill="#1e1e1e">"Thinking&#8230;" then the</text>
+  <text x="76" y="392" font-size="12" fill="#1e1e1e">2-4 sentence explanation</text>
+  <text x="76" y="412" font-size="12" fill="#1e1e1e">appears here</text>
+</svg>
